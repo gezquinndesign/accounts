@@ -18,7 +18,7 @@ const AuthStack = createStackNavigator({
 });
 
 const LoggedInStack = createStackNavigator({
-  Profile: { screen: Home, navigationOptions: { headerTitle: 'Home' } },
+  Home: { screen: Home, navigationOptions: { headerTitle: 'Home' } },
 });
 
 const AppAuthContainer = createAppContainer(AuthStack);
@@ -40,7 +40,7 @@ class App extends Component<{}, IState> {
   }
 
   public async componentDidMount() {
-    const tokens = await accountsClient.refreshSession();
+    accountsClient.refreshSession();
     accountsGraphQL.getUser().then(user => this.setState({ loggedIn: true, user }));
   }
 

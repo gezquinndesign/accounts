@@ -46,7 +46,6 @@ class Signup extends React.Component<NavigationSwitchScreenProps<{}>, IState> {
           password,
         })
         .then(data => {
-          console.log('user', data);
           accountsGraphQL.sendVerificationEmail(email);
           return this.props.navigation.navigate('Login');
         });
